@@ -109,6 +109,11 @@ class SlackController extends Controller
                             'value' => $package->getDownloads(),
                             'short' => true,
                         ],
+                        [
+                            'title' => ':package: Install command',
+                            'value' => $package->getInstallCommand(),
+                            'short' => false,
+                        ],
                     ],
                 ],
             ],
