@@ -97,7 +97,7 @@ class SlackController extends Controller
                     'title' => $package->getName(),
                     'title_link' => $package->getUrl(),
                     'text' => $package->getDescription(),
-                    "mrkdwn_in" => ["fields"],
+                    'mrkdwn_in' => ['fields'],
                     'fields' => [
                         [
                             'title' => ':sparkles: Stars',
@@ -128,7 +128,7 @@ class SlackController extends Controller
      */
     protected function searchWithoutVendor($query)
     {
-        $result = $this->client->request('GET', 'https://packagist.org/search.json?q='.$query);
+        $result = $this->client->request('GET', 'https://packagist.org/search.json?q=' . $query);
         $packages = json_decode($result->getBody(), true);
 
         if (empty($packages['results'])) {
@@ -149,7 +149,7 @@ class SlackController extends Controller
     protected function searchWithVendor($query)
     {
         try {
-            $result = $this->client->request('GET', 'https://packagist.org/packages/'.$query.'.json');
+            $result = $this->client->request('GET', 'https://packagist.org/packages/' . $query . '.json');
         } catch (\Exception $e) {
             return $this->searchWithoutVendor($query);
         }
